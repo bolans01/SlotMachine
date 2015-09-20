@@ -86,14 +86,14 @@ class ViewController: UIViewController {
     
     //IBActions
     func resetButtonPressed (button: UIButton){
-        println("reset button pressed")
+        print("reset button pressed")
         hardReset()
     }
     
     
     func betOneButtonPressed (button: UIButton) {
         if credits <= 0 {
-            showAlertWithText(header: "No More Credits", message: "Reset Game")
+            showAlertWithText("No More Credits", message: "Reset Game")
         }
         else {
             if currentBet < 5 {
@@ -110,7 +110,7 @@ class ViewController: UIViewController {
     func betMaxButtonPressed (button: UIButton) {
         
         if credits <= 5 {
-            showAlertWithText(header: "Not Enough Credits", message: "Bet Less")
+            showAlertWithText("Not Enough Credits", message: "Bet Less")
         }
         else {
             if currentBet < 5 {
@@ -126,12 +126,12 @@ class ViewController: UIViewController {
     }
     
     func spinButtonPressed (button: UIButton) {
-        println("Spin button pressed")
+        print("Spin button pressed")
         removeSlotImageView()
         slots = Factory.createSlots()
         setupSecondContainer(self.secondContainer)
         
-        var winningsMultiplier = SlotBrain.computeWinnings(slots)
+        let winningsMultiplier = SlotBrain.computeWinnings(slots)
         winnings = winningsMultiplier * currentBet
         credits += winnings
         currentBet = 0
@@ -174,7 +174,7 @@ class ViewController: UIViewController {
             for var slotNumber = 0; slotNumber < kNumberOfSlots; ++slotNumber{
                 
                 var slot:Slot
-                var slotImageView = UIImageView()
+                let slotImageView = UIImageView()
                 
                 if slots.count != 0 {
                     let slotContainer = slots[containerNumber]
@@ -335,7 +335,7 @@ class ViewController: UIViewController {
     
     func showAlertWithText (header : String = "Warning", message : String) {
         
-        var alert = UIAlertController(title: header, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: header, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
         

@@ -29,18 +29,18 @@ class SlotBrain {
                     slotRow3.append(slot)
                 }
                 else {
-                    println("Error")
+                    print("Error")
                 }
                 
             }
         }
-        var slotsInRows: [[Slot]] = [slotRow, slotRow2, slotRow3]
+        let slotsInRows: [[Slot]] = [slotRow, slotRow2, slotRow3]
         
         return slotsInRows
     }
 
     class func computeWinnings (slots: [[Slot]]) -> Int {
-        var slotsInRows = unpackSlotIntoSlotRows(slots)
+        let slotsInRows = unpackSlotIntoSlotRows(slots)
         
         var winnings = 0
         
@@ -51,19 +51,19 @@ class SlotBrain {
         for slotRow in slotsInRows {
             
             if checkFlush(slotRow) == true {
-                println("Flush")
+                print("Flush")
                 winnings += 1
                 flushWinCount += 1
             }
             
             if checkThreeInARow(slotRow) == true {
-                println("Three in a row")
+                print("Three in a row")
                 winnings += 1
                 straightWinCount += 1
             }
             
             if checkThreeOfAKind(slotRow) == true {
-                println("Three of a kind")
+                print("Three of a kind")
                 winnings += 3
                 threeOfAKindWinCount += 1
             }
@@ -71,17 +71,17 @@ class SlotBrain {
         }
         
         if flushWinCount == 3 {
-            println("Royal Flush")
+            print("Royal Flush")
             winnings += 15
         }
         
         if straightWinCount == 3{
-            println("Epic Steak")
+            print("Epic Steak")
             winnings += 1000
         }
         
         if threeOfAKindWinCount == 3 {
-            println("Threes all around")
+            print("Threes all around")
             winnings += 50
         }
 
